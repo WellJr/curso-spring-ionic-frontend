@@ -26,6 +26,16 @@ export class AuthService {
             });
     }
 
+    refreshToken() {
+      return this.http.post(
+          `${API_CONFIG.baseUrl}/auth/refresh_token`, 
+          {},
+          {
+            observe: 'response',
+            responseType: 'text'  
+          });
+  }
+
     successfulLogin(authrizationValue : string) {
       // recorta a palavra BARER do Token.
       let tok = authrizationValue.substring(7);
